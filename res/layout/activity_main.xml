@@ -1,0 +1,224 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity" >
+
+    <ImageView
+        android:id="@+id/camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/slidingDrawer1"
+        android:src="@drawable/ic_launcher" />
+
+    <SlidingDrawer
+        android:id="@+id/slidingDrawer1"
+        android:layout_width="200dp"
+        android:layout_height="match_parent"
+        android:content="@+id/content"
+        android:handle="@+id/handle" >
+
+        <Button
+            android:id="@+id/handle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Show Settings" />
+
+        <LinearLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >         
+
+	        <TextView
+	            android:id="@+id/text1"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="@string/hello_world" />
+	
+	        <EditText
+	            android:id="@+id/ssh_host"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignLeft="@+id/text1"
+	            android:layout_below="@+id/text1"
+	            android:ems="10"
+	            android:text="@string/defaulthost" />
+	
+	        <EditText
+	            android:id="@+id/ssh_user"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignLeft="@+id/camera"
+	            android:layout_below="@+id/ssh_host"
+	            android:ems="10"
+	            android:text="@string/defaultuser" />
+	
+	        <EditText
+	            android:id="@+id/ssh_password"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignLeft="@+id/camera"
+	            android:layout_below="@+id/ssh_user"
+	            android:ems="10"
+	            android:inputType="textPassword"
+	            android:text="@string/defaultpassword" />
+	
+	        <LinearLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:orientation="horizontal" >
+	            
+		        <Button
+		            android:id="@+id/start_ssh"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:text="Connect" />
+		        <Button
+		            android:id="@+id/stop_ssh"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginBottom="16dp"
+		            android:text="Disconnect" />
+		        
+	        </LinearLayout>
+	
+	        <EditText
+	            android:id="@+id/ssh_command"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignLeft="@+id/camera"
+	            android:layout_centerVertical="true"
+	            android:ems="10"
+	            android:text="@string/defaultcommand" >
+	
+	            <requestFocus />
+	        </EditText>
+	
+	        <Button
+	            android:id="@+id/ssh_send"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="Send" />
+	        
+	        <TextView
+	            android:id="@+id/text2"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="Select Video Host" />
+
+	        <EditText
+	            android:id="@+id/video_host"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:text="10.0.0.3" />
+	
+	        <LinearLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:orientation="horizontal" >
+	
+	            <ToggleButton
+	                android:id="@+id/toggleVideo"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:text="Video"
+	                android:checked="false"
+	                android:textOn="Video On"
+	                android:textOff="Video Off" />
+	
+	            <ToggleButton
+	                android:id="@+id/toggleControls"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:text="Controls"
+	                android:textOn="Controls On"
+	                android:textOff="Controls off" />
+	
+	        </LinearLayout>
+        </LinearLayout>
+    </SlidingDrawer>
+
+    <ToggleButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PWM Mode"
+            android:id="@+id/pwmToggle"
+            android:textOff="PWM Off"
+            android:textOn="PWM on"
+            android:layout_alignTop="@+id/camera"
+            android:layout_alignRight="@+id/camera"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="PWM Factor"
+            android:id="@+id/textView"
+            android:layout_below="@+id/pwmToggle"
+            android:layout_alignLeft="@+id/pwmToggle"
+            android:background="@android:color/darker_gray"
+            android:textColor="@android:color/white"/>
+
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pwmFactor"
+            android:layout_below="@+id/textView"
+            android:layout_alignLeft="@+id/textView"
+            android:layout_alignRight="@+id/textView"
+            android:background="@android:color/darker_gray"
+            android:textColor="@android:color/white"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:id="@+id/b3"
+            android:background="@android:color/darker_gray"
+            android:textColor="@android:color/white"
+            android:layout_below="@+id/pwmFactor"
+            android:layout_alignRight="@+id/pwmFactor"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:id="@+id/b2"
+            android:background="@android:color/darker_gray"
+            android:textColor="@android:color/white"
+            android:layout_below="@+id/b3"
+            android:layout_alignRight="@+id/pwmFactor"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:id="@+id/b1"
+            android:background="@android:color/darker_gray"
+            android:textColor="@android:color/white"
+            android:layout_below="@+id/b2"
+            android:layout_alignRight="@+id/pwmFactor"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:id="@+id/b0"
+            android:background="@android:color/darker_gray"
+            android:textColor="@android:color/white"
+            android:layout_below="@+id/b1"
+            android:layout_alignRight="@+id/pwmFactor"/>
+
+</RelativeLayout>
